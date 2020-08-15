@@ -1,0 +1,67 @@
+package tp.kits3.livedinner.Servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import tp.kits3.livedinner.DAO.CategoryDAO;
+import tp.kits3.livedinner.DAO.ContactDAO;
+import tp.kits3.livedinner.VO.Category;
+import tp.kits3.livedinner.VO.Contact;
+
+/**
+ * Servlet implementation class ContactUpdateServlet
+ */
+@WebServlet("/contact/update")
+public class ContactUpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public ContactUpdateServlet() {
+		super();
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		int contactid = Integer.parseInt(request.getParameter("coid"));
+		ContactDAO contactDAO = new ContactDAO();
+		
+		Contact contact = contactDAO.getOneContact(contactid);
+
+		if (contact == null) {
+			System.out.println("Khong co category");
+		} else {
+
+			String form = "<div>";
+			form += "<form method='post' action='update'>";
+			form += "Category.id <input type='text' name='ctgid' value='" + contact.getCoid() + "' readonly />";
+			form += "Category.name <input type='text' name='ctgname' value='" + contact.getConame() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "Category.service <input type='text' name='service' value='" + contact.getPriphone() + "' />";
+			form += "<input type='submit' value='Add' />";
+			form += "</form></div>";
+
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().append(form);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

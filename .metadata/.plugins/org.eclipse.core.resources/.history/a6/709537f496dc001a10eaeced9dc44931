@@ -1,0 +1,43 @@
+package tp.kits3.livedinner.Servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import tp.kits3.livedinner.DAO.ContactDAO;
+import tp.kits3.livedinner.VO.Contact;
+
+@WebServlet("/contact/add")
+public class ContactAddServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String form="<div>";
+		form+="<form method='post' action='add'>";
+		form+="Category.name <input type='text' name='ctgname' required />";
+		form+="Category.service <input type='text' name='service' required />";
+		form+="<input type='submit' value='Add' />";
+		form+="</form></div>";
+		
+		resp.setContentType("text/html;charset=UTF-8");
+		resp.getWriter().append(form);
+		
+	}
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		ContactDAO contactDAO=new ContactDAO();
+		
+		Contact contact=new Contact();
+	}
+	
+}

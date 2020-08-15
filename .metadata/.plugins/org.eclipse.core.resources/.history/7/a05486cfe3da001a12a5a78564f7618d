@@ -1,0 +1,36 @@
+package tp.kits3.nickname;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+
+//@SuppressWarnings("serial")
+@WebServlet("/hai")
+public class SecondServlet extends GenericServlet {
+
+	/**
+	 *  Version of this class(servlet)
+	 */
+	private static final long serialVersionUID = 1L;  // có thể thya thế bằng SuppressWarnings để bỏ qua 
+
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		// How to response
+		// 1. set Content-type
+		res.setContentType("text/html;charset=UTF-8");
+		// 2. open OutputStream to client
+		PrintWriter out=res.getWriter();  // our data is text
+		// 3. send HTML data
+		out.println("<html><head><title>SecondDemo</title></head>");
+		out.println("<body>");
+		out.println("<h1>Second Servlet by response object</h1>");
+		out.println("</body></html>");
+		
+	}
+
+}

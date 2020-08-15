@@ -1,0 +1,125 @@
+Domain : how to work: department
+Layer :  MVC pattern: step by step for work
+
+Mỗi người sẽ làm 1 đomain, mỗi domain sẽ chia theo thứ tự Layer
+
+	Controller Has Service
+	Service : has DAO
+	DAO : Respository (DB connection)
+	
+	define Method name and Parameter type
+	
+===> Requirement Documentation
+
+
+API (Interface is Rule)
+      Method interface? 1.type  , 2. return,parameter
+      why need main() ?
+           -console? rule...
+           
+Application Programming Interface
+     Window
+     Linux
+     Android
+     Java API ? On JVM
+     
+     
+Protocol?
+	is Interface
+	Rule
+	to communication between App and App
+	
+Configuration by Text,XML,Java
+
+===============================================================================
+Web Project
+	1.API(s)
+Front-end		Web Brower
+Back-end		Web Server              .cnf
+				Web Application Server  .xml
+				Database server	       
+				
+	2. Protocol(s)
+				HTTP(S) : Browser .. webserver 
+				AJP     : Web server .. WAS
+		    TCP/UDP   
+		    
+Framework ? API
+
+========================================================================
+***Scenario
+1.
+Menu? booking ? landing ? 
+-> web and mobile site ?
+HTML5 -> no need Mobile App(Game-Unity-C#,Unreal-C++?)
+-> Responsice web site (web+mobile: CSS Framework use JQuery) => but ~~~ we dont use Jquery
+
+2. need Data and functions
+a. Modeling -> table of Database
+	 i. Menu: food has name, category, material , recipe
+	 ii. Booking: person's name,phone,number of participant, date ,time, position table
+b. CRUD for Menu, Booking ---> Service, Repository
+c. make money ~~~ earn ~ by daily,monthly,yearly (Thống kê)
+	i.   --> Payment by cash,card,online ~~~ 
+	
+3. Xác định nội dung hiển thị từ DB	
+
+4. Tạo Entity  (Booking)
+// Entity == Model == VO == Bean
+// Data Type (int, double.. ,Class is Type)
+// Web's type Object <--> String, Integer
+
+5. Tạo Repository/DAO (BookRepo)  crud,.. 
+6. Tạo Lớp service (BookingService)
+	BookingService
+	private MenuRepo
+	private BookRepo
+	
+	register(){...}
+ 
+
+==============================           LINUX         =================================
+Cài Linux => Control panel/ Programs and Features / Turn Windows features on or off /Window subsytem for Linux
+Cài Ubuntu => Microsoft store / Ubuntu
+
+package management
+// Cài Ubuntu bằng lệnh
+> sudo apt-get install {package name}
+         by admin
+
+CUI (CLI)
+	command-line interface         
+
+> {command} {option}
+	server be controlled on CLI
+
+
+sudo apt -y update
+sudo apt -y upgrade (changes)
+sudo apt -y autoremove	
+
+//Window Power shell của window
+// Hiển thị máy cài Linux gì
+PS > wsl -l -v
+
+//Hưỡng dẫn sử dụng option
+wsl --help  (giồng docker)
+
+
+
+===============================   Javascript   ===================================
+Browser has Javscript Engine
+Javascript  ==> client side invoke
+
+Engine (Inpterpreter)
+run each line
+
+Can access local file
+but can't access server file
+
+
+- Đặt JS ở cuối trong phần body
+
+		     
+					         
+           

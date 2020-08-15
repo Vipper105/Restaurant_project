@@ -1,0 +1,60 @@
+Web project consist 3 or 4 tiers/layer/floor
+
+ so, we will understand for MVC pattern
+ Model: DB's type
+ View: servlet responese
+ Controller: like servlet
+ 
+1F Servlet: logic process for request
+- security agent --> check name, id card -> ask to meet lien oi
+
+2F DAO : Data Access Object like bloke between servlet and db
+- call office --> o dau lien oi
+
+3F VO : type of data from DB 
+- I'm here
+
+4. Forwading
+
+====================================================
+
+## redirect
+url o url // change url
+HttpServletResponese.sendRedirect("url")
+
+## dispatch
+// don't change URL
+servlet to servlet
+HttpServletRequest.getRequestDispatcher("url");
+===================================================================================
+lấy đường dần web và cắt ra mảng
+String[] uri = request.getRequestURI().split("/");
+
+===================================================================================
+
+// Gson is JSON lib by Google
+JSON is string has KV set
+"{key:value, key:value,key:value}"
+Web,Mobile many use
+
+AJAX basic type
+Object -> JSON
+JSON   -> Object
+
+1 binding
+2 cookies (be saved in Server - client
+ - Cookie class
+ - response.addCookie();
+ - respense.getCookie();
+3 session (be saved in Server - session)
+ - session
+ - HttpSession class
+ - request.getSession()
+ - request.setAttribute();
+ - request.getAttribute();
+
+ServletContext: ServletContext trong java Servlet dùng để lưu các thông tin chung cho toàn bộ website. 
+Mọi servlet có thể truy xuất thông tin từ đối tượng ServletContext. (Gần giống Context-param trong xml)
+
+*** Phân biệt sự khác nahu giữa servletDispatcher/forward(share data giữa Servlet vs JSP hay JSP vs JSP) 
+và ServletContext (like a session/data is shared to all servlets)

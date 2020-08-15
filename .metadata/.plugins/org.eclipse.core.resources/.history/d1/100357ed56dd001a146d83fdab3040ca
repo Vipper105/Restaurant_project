@@ -1,0 +1,104 @@
+Web project consist 3 or 4 tiers/layer/floor
+
+ so, we will understand for MVC pattern
+ Model: DB's type
+ View: servlet responese
+ Controller: like servlet
+ 
+1F Servlet: logic process for request
+- security agent --> check name, id card -> ask to meet lien oi
+
+2F DAO : Data Access Object like bloke between servlet and db
+- call office --> o dau lien oi
+
+3F VO : type of data from DB 
+- I'm here
+
+4. Forwading
+
+====================================================
+
+## redirect
+url o url // change url
+HttpServletResponese.sendRedirect("url")
+
+## dispatch
+// don't change URL
+servlet to servlet
+HttpServletRequest.getRequestDispatcher("url");
+===================================================================================
+lấy đường dần web và cắt ra mảng
+String[] uri = request.getRequestURI().split("/");
+
+===================================================================================
+
+getParameter()trả về tham số yêu cầu http. Những người được truyền từ máy khách đến máy chủ. Ví dụ http://example.com/servlet?parameter=1. Chỉ có thể trở lạiString
+
+getAttribute()chỉ dành cho sử dụng phía máy chủ - bạn điền yêu cầu với các thuộc tính mà bạn có thể sử dụng trong cùng một yêu cầu. Ví dụ: bạn đặt một thuộc tính trong một servlet 
+và đọc nó từ một tệp JSP. Có thể được sử dụng cho bất kỳ đối tượng, không chỉ chuỗi.
+
+
+===================================================================================
+// Gson is JSON lib by Google
+JSON is string has KV set
+"{key:value, key:value,key:value}"
+Web,Mobile many use
+
+AJAX basic type
+Object -> JSON
+JSON   -> Object
+
+1 binding
+2 cookies (be saved in Server - client
+ - Cookie class
+ - response.addCookie();
+ - respense.getCookie(); 
+3 session (be saved in Server - session)
+ - session
+ - HttpSession class
+ - request.getSession()
+ - request.setAttribute();
+ - request.getAttribute();
+
+ServletContext: ServletContext trong java Servlet dùng để lưu các thông tin chung cho toàn bộ website. 
+Mọi servlet có thể truy xuất thông tin từ đối tượng ServletContext. (Gần giống Context-param trong xml)
+
+*** Phân biệt sự khác nahu giữa servletDispatcher/forward(share data giữa Servlet vs JSP hay JSP vs JSP) 
+và ServletContext (like a session/data is shared to all servlets)
+
+=====================================       JSP       ====================================
+<!-- %=  Bỏ giá trị vào HTML -->
+	<%=contextPath %> <!-- Lấy đường dẫn, dùng khi thay đổi đường dẫn ở Server, ** Dễ xảy ra lỗi -->  
+	
+<% java code %>
+<%! declaration; [ declaration; ]+ ... %>
+
+Ví dụ về JSP Declaration:
+
+?
+1
+2
+3
+<%!List<String> list = new ArrayList<String>();%>
+<%!int i = 0;%>
+<%!int a, b, c;%>	
+	
+======================================================================	
+
+Ví dụ đường dẫn của bạn
+ 
+path  =  http://localhost:8080/webapp/
+Sau đó bạn muốn đường dẫn của bạn như thế này : 
+ 
+helpPath= /help/page/help.htm
+
+Cách 1	
+<%=request.getContextPath()%>/help/page/help.htm
+
+Cách 2
+${pageContext.request.contextPath}/help/page/help.htm
+
+============================================================
+Attribute với parameter
+Parameter : truyền dữ liệu từ client lên server
+Attribute :  

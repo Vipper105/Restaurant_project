@@ -1,0 +1,16 @@
+package tp.kits3.nickname;
+
+public class DeliratorExample {
+	
+	public static void main(String[] args) {
+		String[] elements=new String[] {"mario","tansford","queen"};
+		String s=String.join("&", elements);
+//		System.out.println(s);
+		String[] splited =s.split("/");
+		
+		for(String ss:splited) {
+			System.out.println(ss);
+		}
+	}
+
+}

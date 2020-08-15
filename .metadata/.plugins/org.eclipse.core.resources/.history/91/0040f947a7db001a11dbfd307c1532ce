@@ -1,0 +1,10 @@
+package tp.kits3.livedinner.Servlet;
+
+import javax.servlet.http.HttpServlet;
+
+public class BookServlet extends HttpServlet{
+	
+	
+	
+
+}

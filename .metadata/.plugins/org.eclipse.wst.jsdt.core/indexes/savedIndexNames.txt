@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+D:\KITS\Java\JavaJSP_Servlet_Restaurant\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+35262562.index
+1453993983.index
+165333074.index
+180055875.index
+1418763093.index
+2010190847.index
+3635630337.index

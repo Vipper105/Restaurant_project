@@ -1,0 +1,11 @@
+package tp.kits3.livedinner.Servlet;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("reservation-page")
+public class ReservationServlet extends HttpServlet{
+
+	
+	
+}

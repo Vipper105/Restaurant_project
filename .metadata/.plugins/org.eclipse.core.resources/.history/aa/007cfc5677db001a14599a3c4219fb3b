@@ -1,0 +1,15 @@
+package tp.kits3.nickname;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/login3")
+public class LoginBaServlet extends HttpServlet{
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	
+	
+
+}

@@ -1,0 +1,9 @@
+package tp.kits3.livedinner.Servlet;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/contact/add")
+public class ContactAddServlet extends HttpServlet {
+
+}

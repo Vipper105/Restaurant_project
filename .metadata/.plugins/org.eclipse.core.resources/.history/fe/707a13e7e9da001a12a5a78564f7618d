@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Req & Res demo</title>
+</head>
+<body>
+
+<h1>Hello jsp</h1>
+
+<form method="get" action="process url mapped to servlet login"
+
+
+</body>
+</html>

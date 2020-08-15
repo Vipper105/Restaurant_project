@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Req & Res demo</title>
+</head>
+<body>
+
+<h1>Hello jsp</h1>
+
+<div>
+	GET <br/>
+	-- process url mapped to servlet, nếu có dấu / thì sẽ bắt nguồn từ ROOT
+	<form method="get" action="/login">
+		ID : <input type="text" name="uname" placeholder="input your here">
+		<br/>
+		PW : <input type="password" name="upass" placeholder="input your pass here">
+		<br/>
+		<input type="sumit" value="LOGIN">
+		<input type="reset" value="CLEAR"> 
+	</form>
+</div>
+	POST<br/>
+	<form method="post" action="login2"></form>
+
+</body>
+</html>

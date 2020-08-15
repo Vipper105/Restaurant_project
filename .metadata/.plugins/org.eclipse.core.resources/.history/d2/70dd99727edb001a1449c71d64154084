@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Req & Res demo</title>
+</head>
+<body>
+
+<h1>Hello jsp</h1>
+
+<h1> Form demo for servlet </h1>
+<ul>
+	<li><a href="Guru.html"></a></li>
+ </ul>
+
+<div>
+	GET <br/>
+	<!--   process url mapped to servlet, nếu có dấu / ở trước trong action thì nó dẫn từ ROOT -->
+	<!-- Khi click submit thì sẽ thực hiện action gọi servlet xử lý -->
+	<form method="get" action="login1">
+		ID : <input type="text" name="uname" placeholder="input your here">
+		<br/>
+		PW : <input type="password" name="upass" placeholder="input your pass here">
+		<br/>
+		<input type="submit" value="LOGIN">
+		<input type="reset" value="CLEAR"> 
+	</form>
+</div>
+<br/>
+<div>
+	POST<br/>
+	<form method="post" action="login2">
+		ID : <input type="text" name="uname" placeholder="input your here">
+		<br/>
+		PW : <input type="password" name="upass" placeholder="input your pass here">
+		<br/>
+		<input type="submit" value="LOGIN">
+		<input type="reset" value="CLEAR"> 
+	</form>
+</div>
+	
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+** Fix bug ko nhận dc đường dẫn CSS
+Fix cách 1: Fix cứng đường dẫn
+web.xml
+    <servlet>
+	   <servlet-name>helloServlet</servlet-name>
+	   <servlet-class>tp.kits3.livedinner.Servlet.HomePageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>helloServlet</servlet-name>
+	   <url-pattern></url-pattern>
+	</servlet-mapping>
+
+at HomePageServlet	
+@WebServlet("/")   : nó sẽ gọi những link phía sau ví dụ   /a/b/c => gây ra lỗi ko load dc CSS
+
+Fix cách 2: để đường dẫn @WebServlet("") rỗng
+@WebServlet("") ở trang HomePageServlet
+
+
+=============================================================================
+Bug ko tắt breakpoint khi debug sẽ dẫn đến lỗi đen màn hình (do nó debug tới breakpoint đó 
+mà chưa load dc dữ liệu)
+==> Tắt Breakpoint (ở tab breakpoint hay ở tab Markers
+
+=============================================================================
+

@@ -1,0 +1,54 @@
+package tp.kits3.nickname;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class GuruServlet
+ */
+@WebServlet("/GuruServlet")
+public class GuruServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public GuruServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF");
+		
+		String dan=request.getParameter("dan");
+		
+		int idan=Integer.parseInt(dan);
+		String html="<table>";
+		
+		for(int i=0;i<=9;i++) {
+			int result=idan*i;
+			
+			html+="<tr>"
+			
+			html+= idan+" x " +i +" = "+result+"<br/>";
+		}
+		html+="<table>";
+		
+		response.setContentType("text/html;charset=UTF-8");
+//		response.getWriter().append(html);
+		response.getWriter().println(html);
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,74 @@
+package tp.kits3.livedinner.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import tp.kits3.livedinner.VO.Menu;
+
+public class GalleryDAO {
+
+	Connection conn;
+	DataSource dataSource;
+
+	public GalleryDAO() {
+		try {
+			Context ctx = new InitialContext();
+			Context envx = (Context) ctx.lookup("java:/comp/env");
+			this.dataSource = (DataSource) envx.lookup("jdbc/mariadb");
+			this.conn = this.dataSource.getConnection();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public List<Menu> findAllMenu(){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		List<Menu> arrList=new ArrayList<Menu>();
+		
+		
+		try {
+			
+		}catch(Exception ex) {
+			
+			
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (Exception e3) {
+					e3.printStackTrace();
+				}
+			}
+			
+		}
+		
+		
+		return arrList;
+	}
+
+}

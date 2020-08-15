@@ -1,0 +1,13 @@
+package tp.kits3.nickname;
+
+import java.io.InputStream;
+
+public class Example {
+
+	
+	public static void main(String[] args) {
+		
+		InputStream inputStream=new System.out;
+		
+	}
+}

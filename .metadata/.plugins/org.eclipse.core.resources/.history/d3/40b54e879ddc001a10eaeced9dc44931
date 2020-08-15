@@ -1,0 +1,40 @@
+package tp.kits3.livedinner.Servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import tp.kits3.livedinner.DAO.ContactDAO;
+import tp.kits3.livedinner.VO.Contact;
+
+/**
+ * Servlet implementation class ContactUpdateServlet
+ */
+@WebServlet("/contact/update")
+public class ContactUpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+ 
+    public ContactUpdateServlet() {
+        super();
+       
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		ContactDAO contactDAO=new ContactDAO();
+		contactDAO.getOneContact(0);
+		Contact contact=new Contact();
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

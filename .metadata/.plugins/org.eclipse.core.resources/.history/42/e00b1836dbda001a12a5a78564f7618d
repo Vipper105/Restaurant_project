@@ -1,0 +1,9 @@
+package tp.kits3.nickname;
+
+public class FirstServlet {
+
+	// Hello
+	public static void main(String[] args) {
+		
+	}
+}

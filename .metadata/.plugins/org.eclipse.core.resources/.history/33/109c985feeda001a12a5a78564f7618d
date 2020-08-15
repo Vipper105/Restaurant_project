@@ -1,0 +1,32 @@
+package tp.kits3.nickname;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class LoginMotServlet
+ */
+@WebServlet("/login1")
+public class LoginMotServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+   @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	   String uname=request.getParameter("uname"); // get data from form input name="uname"
+	   String upass=request.getParameter("upass"); // get data from form input name="upass"
+	   
+	   System.out.println(); // if you want to print console
+	   response.setContentType("text/plain;charset="UTF-8");
+	   response.getWriter().println("uname: "+uname);
+	   
+	   
+	   
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+}

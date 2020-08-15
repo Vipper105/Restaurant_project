@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+D:\KITS\Java\JavaJSP_Servlet_Restaurant\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1737727167.index
+\webShop\src
+D:\KITS\Java\JavaJSP_Servlet_Restaurant\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1502377247.index
+\webShop\src
+D:\KITS\Java\JavaJSP_Servlet_Restaurant\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1418763093.index
+\webShop\src

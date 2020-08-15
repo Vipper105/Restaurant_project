@@ -1,0 +1,53 @@
+package tp.kits3.nickname;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/login3")
+public class LoginBaServlet extends HttpServlet {
+	// from GenericServlet implement Serializable's rule
+	private static final long serialVersionUID = 1L;
+
+	LoginBaServlet() {
+		super();
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// Encoding
+		request.setCharacterEncoding("UTF-8"); // nhận thông tin từ Brower và luôn xử lý bằng UTF-8
+		String name = request.getParameter("uname");
+		String pass = request.getParameter("upass");
+
+		// connection to DB, send SQL,search user info
+		String message = "not-valied info";
+
+		if (!name.isEmpty()) { // name.length()==0
+			if (!pass.isEmpty() && pass.length() > 11) {
+				message = "valid info";
+			}
+		}
+
+		// response to client message
+		response.setContentType("text/plain;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		out.println(message);
+
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// open form html
+	}
+
+}

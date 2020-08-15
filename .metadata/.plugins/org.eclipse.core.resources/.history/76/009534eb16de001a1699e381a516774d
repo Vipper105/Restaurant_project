@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2> Introduction </h2>
+<h2><a href="/webShop/home-page">Home Page</a></h2>
+
+
+</body>
+</html>
+
+<%
+	//RequestDispatcher rd = request.getRequestDispatcher("/home-page");
+	//rd.forward(request, response);
+%>

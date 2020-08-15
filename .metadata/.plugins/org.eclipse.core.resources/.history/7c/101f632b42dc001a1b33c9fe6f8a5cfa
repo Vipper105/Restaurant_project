@@ -1,0 +1,60 @@
+package tp.kits3.livedinner.Servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import tp.kits3.livedinner.DAO.TagDAO;
+import tp.kits3.livedinner.VO.Tag;
+
+/**
+ * Servlet implementation class TagServlet
+ */
+@WebServlet("/TagServlet/*")
+public class TagServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public TagServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String[] uri=request.getRequestURI().split("/");
+		System.out.println(uri[uri.length-1]);   // < - what command
+		
+		TagDAO dao = new TagDAO();
+		List<Tag> list = dao.findAll();
+
+		String table = "<table>";
+		// for or for-each
+		for (Tag t : list) {
+			int tid = t.getTagid();
+			String tname = t.getTgname();
+			table += "<tr><td>" + tid + "</td><td>" + tname + "</td></td>";
+//			table +=t.toString();
+		}
+
+		table+="</table>";
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

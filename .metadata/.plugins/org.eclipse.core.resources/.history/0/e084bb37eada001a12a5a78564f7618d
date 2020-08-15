@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Req & Res demo</title>
+</head>
+<body>
+
+<h1>Hello jsp</h1>
+
+<div></div>
+//process url mapped to servlet, nếu có dấu / thì sẽ bắt nguồn từ ROOT
+<form method="get" action="/login"><</form>
+</div>
+
+</body>
+</html>

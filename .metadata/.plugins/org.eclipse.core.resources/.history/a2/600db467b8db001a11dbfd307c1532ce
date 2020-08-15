@@ -1,0 +1,130 @@
+package tp.kits3.nickname;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+ amazing
+  url:
+ /tag/ -> means show tag list
+ /tag/insert -> means add tag 
+ /tag/edit -> means edit tag 
+  
+  
+ * */
+
+
+@WebServlet("/tag/*")
+public abstract class TagServlet2Test extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	private Connection conn;
+	TagServlet2Test(){
+		super();
+		initConnection();
+	
+	}
+	
+	private void initConnection() {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 try {
+			this.conn=DriverManager.getConnection("jdbc:mariadb://localhost:3306/restaurant","root","123123");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void destroy() {
+		super.destroy();
+		// Phải đóng lại ở destroy vì...
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // is field when create Constructor	// nếu đóng phải open nó lại
+	}
+	
+	
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		Statement stmt=null;
+		ResultSet rs=null;
+		// restaurant : ten DB
+		try {
+//			Class.forName("org.mariadb.jdbc.Driver");
+//			Connection conn=DriverManager.getConnection("jdbc:mariadb://localhost:3306/restaurant","root","123123");
+			
+			// ready SQL
+//			Statement vs PerpareStathment
+			stmt=conn.createStatement();
+			String sql="select * from tag";
+			// Get result from DB
+			stmt.execute(sql);   // when use? just retrieve (select) , return về boolean
+			//boolean rsb=stmt.execute(sql);   // check is connect
+		    rs=stmt.executeQuery(sql);  //   executeQuery need get data
+			//stmt.executeQuery(sql);  // when use? update,insert, return về ResultSet
+			
+			while(rs.next()) {
+				int tid=rs.getInt("tagid");
+				String tname=rs.getString("tgname");
+				System.out.println(tid +" : "+tname);
+				
+			}
+		
+//			conn.close();  // **Nếu đóng lại ở đây thì nó sẽ đóng luống lại và ko thực hiện phương thức service
+			
+//			System.out.println("Connect DB successfully");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// to save memory
+			// all stream have to close
+			try {rs.close();} catch (SQLException e) {}
+			try {stmt.close();} catch (SQLException e) {}
+					
+		}
+		
+		*/
+		
+		
+		String uri=request.getRequestURI();
+		String[] spliteURI=uri.split("/");
+		
+		int last=spliteURI.length-1;
+		
+		response.getWriter().append("Server at: ").append(uri);
+		
+			
+	}
+	
+	// Child can use this
+	protected abstract void resolver(ResultSet resultSet);
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+	
+	// *** Nhớ add library buildpath / .. / Deloyment Assembly / add connect DB jar
+	
+}

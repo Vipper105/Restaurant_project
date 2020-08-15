@@ -1,0 +1,15 @@
+package tp.kits3.nickname;
+
+import javax.servlet.http.HttpServlet;
+
+public class ThirdImpact extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	
+
+}

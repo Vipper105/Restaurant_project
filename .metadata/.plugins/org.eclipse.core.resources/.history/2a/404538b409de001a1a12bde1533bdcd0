@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<%!
+	// filed and methods
+	// JSP  complie as Servlet
+	int version=1;
+
+// phải có dấu chấm thang mới tạo phương thức dc
+private void todo(){
+	
+}
+	
+
+%>
+
+<%
+
+int sum=10+30;
+String title="page's title";
+request.getAttribute("pm");  // from servlet
+request.getParameter("user");  // from client
+
+
+%>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	JSP: là nói tới việc trong html có thể bỏ java code vào
+	
+	<h1><%=title %></h1>
+
+
+
+
+
+</body>
+</html>

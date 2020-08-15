@@ -1,0 +1,37 @@
+package tp.kits3.livedinner.Servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/category/add")
+public class CategoryAddServlet extends HttpServlet{
+
+	private static final long serialVersionUID = 1L;
+
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO show form to insert
+		
+		PrintWriter printWriter=resp.getWriter();
+		String form="<div>";
+		form+="<form method='post' action='add'";
+		form+="Category.name <input type='text' name='ctgname' required />";
+		form+="Category.service <input type='text' name='service' required />";
+		form+="<input type='submit' value='Add' required />";
+		form+="</form></div>";
+		resp.print
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO : save to DB
+		doGet(req, resp);
+	}
+}

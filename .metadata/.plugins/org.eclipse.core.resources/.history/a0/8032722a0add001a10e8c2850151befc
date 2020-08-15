@@ -1,0 +1,42 @@
+Web project consist 3 or 4 tiers/layer/floor
+
+ so, we will understand for MVC pattern
+ Model: DB's type
+ View: servlet responese
+ Controller: like servlet
+ 
+ 
+1F Servlet: logic process for request
+- security agent --> check name, id card -> ask to meet lien oi
+
+2F DAO : Data Access Object like bloke between servlet and db
+- call office --> o dau lien oi
+
+3F VO : type of data from DB 
+- I'm here
+
+4. Forwading
+
+## redirect
+url o url // change url
+HttpServletResponese.sendRedirect("url")
+
+## dispatch
+// don't change URL
+servlet to servlet
+HttpServletRequest.getRequestDispatcher("url");
+
+
+
+// Gson is JSON lib by Google
+JSON is string has KV set
+"{key:value, key:value,key:value}"
+Web,Mobile many use
+
+AJAX basic type
+Object -> JSON
+JSON   -> Object
+
+- binding
+- cookies
+- session

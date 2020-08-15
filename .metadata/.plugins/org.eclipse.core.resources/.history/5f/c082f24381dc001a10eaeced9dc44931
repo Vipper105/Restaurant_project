@@ -1,0 +1,16 @@
+package tp.kits3.nickname;
+
+public class DeliratorExample {
+	// Xử lý của request.getParameter
+	public static void main(String[] args) {
+		String[] elements=new String[] {"mario","tansford","queen"};
+		String s=String.join("&", elements);
+//		System.out.println(s);
+		String[] splited =s.split("&");  //  tương đương request.getParameter
+		
+		for(String ss:splited) {
+			System.out.println(ss.split("="));
+		}
+	}
+
+}

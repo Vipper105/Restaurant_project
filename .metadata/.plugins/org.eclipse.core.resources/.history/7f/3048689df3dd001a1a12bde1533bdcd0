@@ -1,0 +1,13 @@
+package tp.kits3.livedinner.DAO;
+
+import java.sql.Connection;
+
+import javax.sql.DataSource;
+
+public class GalleryDAO {
+	
+	Connection conn;
+	DataSource dataSource;
+	
+
+}
