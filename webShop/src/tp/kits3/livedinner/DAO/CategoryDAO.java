@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 import tp.kits3.livedinner.VO.Category;
 
-public class CategoryDAO implements ICategoryDAO<Category>{
+public class CategoryDAO implements ICategoryDAO<Category> {
 
 	/*
 	 * use DataSource and ConnectionPool
@@ -43,9 +43,9 @@ public class CategoryDAO implements ICategoryDAO<Category>{
 		// if you don't close, your app die
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		Connection conn=null;
+		Connection conn = null;
 		List<Category> list = new ArrayList<Category>();
-		
+
 		try {
 			conn = this.datasource.getConnection();
 			String selectAll = "select * from cateory";
@@ -73,37 +73,6 @@ public class CategoryDAO implements ICategoryDAO<Category>{
 			e.printStackTrace();
 		}
 		return list; // not null check .size() == 0 means empty list
-	}
-
-	// add 
-	public void save(Category category) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-		try {
-
-			conn = datasource.getConnection();
-			String insert = "insert into cateory (ctname,service) value(?,?)";
-			pstmt = conn.prepareStatement(insert);
-			pstmt.setString(1, category.getCtname());
-			pstmt.setString(2, category.getService());
-			pstmt.executeUpdate();
-
-		} catch (Exception ex) {
-
-			ex.printStackTrace();
-		} finally {
-			try {
-//				rs.close();
-				pstmt.close();
-				conn.close();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-
 	}
 
 	public Category findOne(int ctgid) {
@@ -168,15 +137,42 @@ public class CategoryDAO implements ICategoryDAO<Category>{
 	}
 
 	@Override
-	public void add(Category t) {
-		// TODO Auto-generated method stub
-		
+	public void add(Category category) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = datasource.getConnection();
+			String insert = "insert into cateory (ctname,service) value(?,?)";
+			pstmt = conn.prepareStatement(insert);
+			pstmt.setString(1, category.getCtname());
+			pstmt.setString(2, category.getService());
+			pstmt.executeUpdate();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tp.kits3.livedinner.DAO.CategoryDAO;
+import tp.kits3.livedinner.DAO.ICategoryDAO;
+import tp.kits3.livedinner.DAO.I_Restaurant;
 import tp.kits3.livedinner.VO.Category;
 
 @WebServlet("/category/add")
@@ -36,13 +38,14 @@ public class CategoryAddServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO : save to DB
-		CategoryDAO categoryDAO=new CategoryDAO();
+		ICategoryDAO<Category> categoryDAO=new CategoryDAO();
+		//CategoryDAO categoryDAO=new CategoryDAO();
 		Category category=new Category();
 		category.setCtname(req.getParameter("ctgname"));
 
 		if(req.getParameter("service").length()==1) {
 			category.setService(req.getParameter("service"));
-			categoryDAO.save(category);
+			categoryDAO.add(category);
 			
 		}else {
 			System.out.println("not valid data: must be a char");

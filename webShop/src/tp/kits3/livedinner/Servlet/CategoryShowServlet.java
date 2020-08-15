@@ -15,7 +15,7 @@ import tp.kits3.livedinner.DAO.CategoryDAO;
 import tp.kits3.livedinner.VO.Category;
 
 @WebServlet("/category/list")
-public class CategoryServlet extends HttpServlet {
+public class CategoryShowServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
