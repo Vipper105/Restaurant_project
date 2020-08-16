@@ -2,7 +2,7 @@ package tp.kits3.livedinner.DAO;
 
 import java.util.List;
 
-public interface I_Restaurant<T> {
+public interface I_Restaurant<T extends Object> {
 
 	// add
 	void add(T t);
@@ -14,7 +14,7 @@ public interface I_Restaurant<T> {
 	void delete(int id);
 
 	// read/show/find all
-	public <T extends Object>List<T> findAll();
+	public List<T> findAll();
 
 	// find one
 	T findOne(int id);

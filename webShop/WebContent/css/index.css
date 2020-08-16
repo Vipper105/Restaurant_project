@@ -479,6 +479,11 @@ background: #d65106;
 color: #f2f2f2;
 }
 
+.othersTabColor{
+	background: white;
+	color: black;
+}
+
 .aColor{
   color: #f2f2f2 !important;
 }  

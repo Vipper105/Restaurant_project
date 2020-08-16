@@ -3,6 +3,7 @@ package tp.kits3.livedinner.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,14 +64,30 @@ public class CategoryDAO implements ICategoryDAO<Category> {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
 
-		try {
-			rs.close();
-			pstmt.close();
-			conn.close(); // maxTotal="50"
-		} catch (Exception e) {
-			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					conn.close();// maxTotal="50"
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
 		}
 		return list; // not null check .size() == 0 means empty list
 	}

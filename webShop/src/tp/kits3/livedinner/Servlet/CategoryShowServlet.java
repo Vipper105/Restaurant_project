@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
 
 import tp.kits3.livedinner.DAO.CategoryDAO;
+import tp.kits3.livedinner.DAO.ICategoryDAO;
 import tp.kits3.livedinner.VO.Category;
 
 @WebServlet("/category/list")
@@ -24,32 +25,49 @@ public class CategoryShowServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		request.getAttribute("menuName");
-		
-		CategoryDAO categoryDAO = new CategoryDAO();
-		List<Category> list = categoryDAO.findAll();
-		
-		if(list.size()==0) {
-			System.out.println("Have no entries");
-		}	
-
-		String divList = "<div class='ctgList'>";
-		
-		for(Category ct:list) {
-//			divList+="<p><a href='update?ctgid="+ct.getCtgid()+"'>"+ct.toString()+"</a></p>";
-			// Chuyển trang
-			divList+="<p><a href='update?ctgid="+ct.getCtgid()+"'>" + ct.toString() + "</a></p>";
-		}
-		
-		divList += "</div>";
 		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().append(divList);
-
+//		ICategoryDAO<Category> categoryDAO=new CategoryDAO();
+//		//CategoryDAO categoryDAO = new CategoryDAO();
+//		List<Category> list = categoryDAO.findAll();
+//		
+//		if(list.size()==0) {
+//			System.out.println("Have no entries");
+//		}	
+//
+//		request.setAttribute("listCategory", list);
+		
 	}
+
+//	@Override
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//
+//		request.getAttribute("menuName");
+//		ICategoryDAO<Category> categoryDAO=new CategoryDAO();
+//		//CategoryDAO categoryDAO = new CategoryDAO();
+//		List<Category> list = categoryDAO.findAll();
+//		
+//		if(list.size()==0) {
+//			System.out.println("Have no entries");
+//		}	
+//
+//		String divList = "<div class='ctgList'>";
+//		
+//		for(Category ct:list) {
+////			divList+="<p><a href='update?ctgid="+ct.getCtgid()+"'>"+ct.toString()+"</a></p>";
+//			// Chuyển trang
+//			divList+="<p><a href='update?ctgid="+ct.getCtgid()+"'>" + ct.toString() + "</a></p>";
+//		}
+//		
+//		divList += "</div>";
+//		response.setContentType("text/html;charset=UTF-8");
+//		response.getWriter().append(divList);
+//
+//	}
 }

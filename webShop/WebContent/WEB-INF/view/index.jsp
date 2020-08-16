@@ -1,6 +1,12 @@
+<%@page import="tp.kits3.livedinner.DAO.MenuDao"%>
+<%@page import="tp.kits3.livedinner.DAO.IMenuDAO"%>
+<%@page import="tp.kits3.livedinner.VO.Category"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="tp.kits3.livedinner.VO.Menu"%>
+<%@ page import="tp.kits3.livedinner.VO.Menu"%>
+<%@ page import="tp.kits3.livedinner.DAO.ICategoryDAO"%>
+<%@ page import="tp.kits3.livedinner.DAO.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -34,11 +40,21 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
 	rel="stylesheet">
-	
+
 </head>
 
 <%
+	// request.removeAttribute("listMenu"); // xóa cái Attribute("listMenu") => nó ko in ra dc listMenu
 	List<Menu> listMenu = (ArrayList<Menu>) request.getAttribute("listMenu");
+	 // List<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
+	ICategoryDAO<Category> categoryDAO = new CategoryDAO();
+	List<Category> listCategory = categoryDAO.findAll();
+	 IMenuDAO<Menu> menuDAO = new MenuDao();
+	 List<Menu> listMenuByCategoryID1 = menuDAO.findAllByCategoryID(1);
+	 List<Menu> listMenuByCategoryID2 = menuDAO.findAllByCategoryID(2);
+	 List<Menu> listMenuByCategoryID3 = menuDAO.findAllByCategoryID(3);
+	 List<Menu> listMenuByCategoryID4 = menuDAO.findAllByCategoryID(4);
+	
 %>
 
 <body>
@@ -51,9 +67,9 @@
 
 	<!-- Start header -->
 	<jsp:include page="header.jsp"></jsp:include>
-	
+
 	<!-- End header -->
-	
+
 
 	<div class="slideshow-container">
 
@@ -191,289 +207,109 @@
 			<div class="special-menu-content">
 				<div id="v-pills-tab">
 					<ul>
-						<li class="tabColor" id="tab1"
-							onclick="changeTab('v-pills-home','tab1','v-pills-home-tab')"><a
-							href="#/" class="aColor" id="v-pills-home-tab">All</a></li>
-						<li id="tab2"
-							onclick="changeTab('v-pills-profile','tab2','v-pills-profile-tab')"><a
-							href="#/" id="v-pills-profile-tab">Drinks</a></li>
-						<li id="tab3"
-							onclick="changeTab('v-pills-messages','tab3','v-pills-messages-tab')"><a
-							href="#/" id="v-pills-messages-tab">Lunch</a></li>
-						<li id="tab4"
-							onclick="changeTab('v-pills-settings','tab4','v-pills-settings-tab')"
-							class="tabChange"><a href="#/" id="v-pills-settings-tab">Dinner</a>
+
+						<%
+					
+						String[] strTab={"v-pills-home","v-pills-profile","v-pills-messages","v-pills-settings"};
+							for (int i = 0; i < listCategory.size(); ++i) {
+						%>
+
+						<%
+							if (i == 0) {
+						%>
+						<li class="tabColor" id="tab<%=i + 1%>"
+							onclick="changeTab('<%=strTab[i] %>','tab<%=i + 1 %>','<%=i + 1%>')">
+							<a href="#/" class="aColor" id="<%=i + 1%>"> <%=listCategory.get(i).getCtname()%>
+						</a>
 						</li>
+						<%
+							} else {
+						%>
+						<li id="tab<%=i + 1%>"
+							onclick="changeTab('<%=strTab[i] %>','tab<%=i + 1 %>','<%=i + 1%>')">
+							<a href="#/" class="othersTabColor" id="<%=i + 1%>"> <%=listCategory.get(i).getCtname()%>
+						</a>
+						</li>
+						<%
+							}
+						%>
+						<%
+							}
+						%>
+
+					
 					</ul>
 
 				</div>
 
 				<div id="v-pills-tabContent">
 					<div id="v-pills-home" class="pills">
-						<div class="container" onmouseover="showOverplay('op1')"
-							onmouseout="hideOverplay('op1')">
-							<img src="<%=contextPath%>/images/img-01.jpg" alt="Image">
-							<div class="overplay" id="op1">
+						<%for(int i=0;i<listMenuByCategoryID1.size();i++) { %>
+						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
+							onmouseout="hideOverplay('op<%=i+1 %>')">
+							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
-									<h4>Special Drinks 1</h4>
+									<h4>Special Drinks <%=i+1 %></h4>
 									<p>Sed id magna vitae eros sagittis euismod.</p>
 									<span>----------------</span>
 									<h5>$7.79</h5>
 								</div>
 							</div>
 						</div>
-
-						<div class="container" onmouseover="showOverplay('op2')"
-							onmouseout="hideOverplay('op2')">
-							<img src="<%=contextPath%>/images/img-02.jpg" alt="Image">
-							<div class="overplay" id="op2">
-								<div class="text_overplay">
-									<h4>Special Drinks 2</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$9.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op3')"
-							onmouseout="hideOverplay('op3')">
-							<img src="<%=contextPath%>/images/img-03.jpg" alt="Image">
-							<div class="overplay" id="op3">
-								<div class="text_overplay">
-									<h4>Special Drinks 3</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$10.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op4')"
-							onmouseout="hideOverplay('op4')">
-							<img src="<%=contextPath%>/images/img-04.jpg" alt="Image">
-							<div class="overplay" id="op4">
-								<div class="text_overplay">
-									<h4>Special Drinks 4</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$11.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op5')"
-							onmouseout="hideOverplay('op5')">
-							<img src="<%=contextPath%>/images/img-05.jpg" alt="Image">
-							<div class="overplay" id="op5">
-								<div class="text_overplay">
-									<h4>Special Drinks 5</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$12.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op6')"
-							onmouseout="hideOverplay('op6')">
-							<img src="<%=contextPath%>/images/img-06.jpg" alt="Image">
-							<div class="overplay" id="op6">
-								<div class="text_overplay">
-									<h4>Special Drinks 6</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$12.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op7')"
-							onmouseout="hideOverplay('op7')">
-							<img src="<%=contextPath%>/images/img-07.jpg" alt="Image">
-							<div class="overplay" id="op7">
-								<div class="text_overplay">
-									<h4>Special Drinks 7</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$14.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op8')"
-							onmouseout="hideOverplay('op8')">
-							<img src="<%=contextPath%>/images/img-08.jpg" alt="Image">
-							<div class="overplay" id="op8">
-								<div class="text_overplay">
-									<h4>Special Drinks 8</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$15.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op9')"
-							onmouseout="hideOverplay('op9')">
-							<img src="<%=contextPath%>/images/img-09.jpg" alt="Image">
-							<div class="overplay" id="op9">
-								<div class="text_overplay">
-									<h4>Special Drinks 9</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
+						<%} %>
 
 					</div>
 
 					<div id="v-pills-profile" class="pills">
-						<div class="container" onmouseover="showOverplay('op8')"
-							onmouseout="hideOverplay('op8')">
-							<img src="<%=contextPath%>/images/img-08.jpg" alt="Image">
-							<div class="overplay" id="op8">
+						<%for(int i=0;i<listMenuByCategoryID2.size();i++) { %>
+						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
+							onmouseout="hideOverplay('op<%=i+1 %>')">
+							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
-									<h4>Special Drinks 8</h4>
+									<h4>Special Drinks <%=i+1 %></h4>
 									<p>Sed id magna vitae eros sagittis euismod.</p>
 									<span>----------------</span>
-									<h5>$16.79</h5>
+									<h5>$7.79</h5>
 								</div>
 							</div>
 						</div>
-
-						<div class="container" onmouseover="showOverplay('op9')"
-							onmouseout="hideOverplay('op9')">
-							<img src="<%=contextPath%>/images/img-09.jpg" alt="Image">
-							<div class="overplay" id="op9">
-								<div class="text_overplay">
-									<h4>Special Drinks 9</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op7')"
-							onmouseout="hideOverplay('op7')">
-							<img src="<%=contextPath%>/images/img-07.jpg" alt="Image">
-							<div class="overplay" id="op7">
-								<div class="text_overplay">
-									<h4>Special Drinks 7</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
+						<%} %>
 					</div>
 
 					<div id="v-pills-messages" class="pills">
-						<div class="container" onmouseover="showOverplay('op3')"
-							onmouseout="hideOverplay('op3')">
-							<img src="<%=contextPath%>/images/img-03.jpg" alt="Image">
-							<div class="overplay" id="op3">
+						<%for(int i=0;i<listMenuByCategoryID3.size();i++) { %>
+						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
+							onmouseout="hideOverplay('op<%=i+1 %>')">
+							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
-									<h4>Special Drinks 3</h4>
+									<h4>Special Drinks <%=i+1 %></h4>
 									<p>Sed id magna vitae eros sagittis euismod.</p>
 									<span>----------------</span>
-									<h5>$16.79</h5>
+									<h5>$7.79</h5>
 								</div>
 							</div>
 						</div>
-
-						<div class="container" onmouseover="showOverplay('op5')"
-							onmouseout="hideOverplay('op5')">
-							<img src="<%=contextPath%>/images/img-05.jpg" alt="Image">
-							<div class="overplay" id="op5">
-								<div class="text_overplay">
-									<h4>Special Drinks 5</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op7')"
-							onmouseout="hideOverplay('op7')">
-							<img src="<%=contextPath%>/images/img-07.jpg" alt="Image">
-							<div class="overplay" id="op7">
-								<div class="text_overplay">
-									<h4>Special Drinks 7</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
+						<%} %>
 					</div>
 
 					<div id="v-pills-settings" class="pills">
-						<div class="container" onmouseover="showOverplay('op1')"
-							onmouseout="hideOverplay('op1')">
-							<img src="<%=contextPath%>/images/img-01.jpg" alt="Image">
-							<div class="overplay" id="op1">
+						<%for(int i=0;i<listMenuByCategoryID4.size();i++) { %>
+						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
+							onmouseout="hideOverplay('op<%=i+1 %>')">
+							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
-									<h4>Special Drinks 1</h4>
+									<h4>Special Drinks <%=i+1 %></h4>
 									<p>Sed id magna vitae eros sagittis euismod.</p>
 									<span>----------------</span>
-									<h5>$16.79</h5>
+									<h5>$7.79</h5>
 								</div>
 							</div>
 						</div>
-
-						<div class="container" onmouseover="showOverplay('op2')"
-							onmouseout="hideOverplay('op2')">
-							<img src="<%=contextPath%>/images/img-02.jpg" alt="Image">
-							<div class="overplay" id="op2">
-								<div class="text_overplay">
-									<h4>Special Drinks 2</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
-
-						<div class="container" onmouseover="showOverplay('op3')"
-							onmouseout="hideOverplay('op3')">
-							<img src="<%=contextPath%>/images/img-03.jpg" alt="Image">
-							<div class="overplay" id="op3">
-								<div class="text_overplay">
-									<h4>Special Drinks 3</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
-						<div class="container" onmouseover="showOverplay('op4')"
-							onmouseout="hideOverplay('op4')">
-							<img src="<%=contextPath%>/images/img-04.jpg" alt="Image">
-							<div class="overplay" id="op4">
-								<div class="text_overplay">
-									<h4>Special Drinks 4</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
-						<div class="container" onmouseover="showOverplay('op7')"
-							onmouseout="hideOverplay('op7')">
-							<img src="<%=contextPath%>/images/img-07.jpg" alt="Image">
-							<div class="overplay" id="op7">
-								<div class="text_overplay">
-									<h4>Special Drinks 7</h4>
-									<p>Sed id magna vitae eros sagittis euismod.</p>
-									<span>----------------</span>
-									<h5>$16.79</h5>
-								</div>
-							</div>
-						</div>
+						<%} %>
 
 					</div>
 				</div>
@@ -593,35 +429,24 @@
 	<div class="contact">
 		<div class="pc-layout">
 			<ul>
-				<li>
-					<span class="ico-contact">&#9742</span>
-					<div>	
-						<h4>Phone</h4><br/>
-						<p>
-							+01 123-456-4590
-						</p>
-					</div>
-					<span class="contact-arrow">❯❯</span>
-				</li>
-				<li>
-					<span class="ico-contact">&#9993</span>
+				<li><span class="ico-contact">&#9742</span>
 					<div>
-						<h4>Email</h4><br/>
-						<p>s
-							yourmail@gmail.com
-						</p>
-					</div>
-					<span class="contact-arrow">❯❯</span>
-				</li>
-				<li>
-					<span class="ico-contact">&#9992</span>
+						<h4>Phone</h4>
+						<br />
+						<p>+01 123-456-4590</p>
+					</div> <span class="contact-arrow">❯❯</span></li>
+				<li><span class="ico-contact">&#9993</span>
 					<div>
-						<h4>Location</h4><br/>
-						<p>
-							800, Lorem Street, US
-						</p>
-					</div>
-				</li>
+						<h4>Email</h4>
+						<br />
+						<p>s yourmail@gmail.com</p>
+					</div> <span class="contact-arrow">❯❯</span></li>
+				<li><span class="ico-contact">&#9992</span>
+					<div>
+						<h4>Location</h4>
+						<br />
+						<p>800, Lorem Street, US</p>
+					</div></li>
 			</ul>
 		</div>
 	</div>
@@ -637,12 +462,12 @@
 		aria-hidden="true"></i></a>
 
 	<!-- ALL JS FILES -->
-	<!-- ALL PLUGINS -->	
-<script src="<%=contextPath%>/js/menu.js"></script>
-<script src="<%=contextPath%>/js/slider.js"></script>
-<script src="<%=contextPath%>/js/special-menu.js"></script>
-<script src="<%=contextPath%>/js/gallery.js"></script>
-<script src="<%=contextPath%>/js/customerReview.js"></script>
+	<!-- ALL PLUGINS -->
+	<script src="<%=contextPath%>/js/menu.js"></script>
+	<script src="<%=contextPath%>/js/slider.js"></script>
+	<script src="<%=contextPath%>/js/special-menu.js"></script>
+	<script src="<%=contextPath%>/js/gallery.js"></script>
+	<script src="<%=contextPath%>/js/customerReview.js"></script>
 </body>
 
 

@@ -102,6 +102,19 @@ Attribute với parameter
 Parameter : truyền dữ liệu từ client lên server => vậy làm sao có thể truyền dữ liệu từ Server về Client và làm sao share dữ liệu từ servlet với nhau?
 => Attribute :  
 
+Khi setAttribute có cần gọi servlet hay không ??
+sau khi set rồi thì nó có lưu trữ lại ko có cần remove Attribute ko ?
+
+request.setAttribute
+In this section you will learn about the request.setAttribute.
+
+This section will describe you about the setAttribute method of request object. 
+setAttribute() method is used to set an attribute to a servlet request in a web application. 
+Attributes set by this method can be reset between requests. This method can be used in Servlet and/or in JSP. 
+However, request is the implicit object in JSP and it can be used directly to set an attribute 
+using setAttribute method whereas, in Servlet you can use this method by creating 
+a reference variable of ServletRequest or HttpServletRequest interface.
+
 
 ==============================================================
 

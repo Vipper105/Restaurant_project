@@ -43,7 +43,7 @@ public class MenuListServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		// *****
-		List<Menu> menuList = menuDao.findAllMenu();
+		List<Menu> menuList = menuDao.findAll();
 		request.setAttribute("MenuList", menuList);
 
 		//ServletContext ctx = getServletContext();

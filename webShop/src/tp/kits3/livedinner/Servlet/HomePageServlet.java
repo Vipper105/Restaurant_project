@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tp.kits3.livedinner.DAO.CategoryDAO;
+import tp.kits3.livedinner.DAO.ICategoryDAO;
+
 import tp.kits3.livedinner.DAO.MenuDao;
+import tp.kits3.livedinner.VO.Category;
 import tp.kits3.livedinner.VO.Menu;
 
 /**
@@ -22,7 +26,6 @@ import tp.kits3.livedinner.VO.Menu;
 public class HomePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	public HomePageServlet() {
 		super();
 	}
@@ -33,22 +36,39 @@ public class HomePageServlet extends HttpServlet {
 //		String prefix = "/WEB-INF/view/";
 //		String postfix = ".jsp";
 		MenuDao menuDao = new MenuDao();
-		List<Menu> listMenu = menuDao.findAllMenu();
+		List<Menu> listMenu = menuDao.findAll();
 //		for(Menu menu : listMenu) {
 //			System.out.println("menu " + menu.getMuname());
 //		}
 		request.setAttribute("listMenu", listMenu);
+//		request.removeAttribute("listMenu");
+		
+		//===============================================================================
+		//I_Restaurant<Category> categoryDAO=new CategoryDAO();
+		ICategoryDAO<Category> categoryDAO=new CategoryDAO();
+		//CategoryDAO categoryDAO = new CategoryDAO();
+		List<Category> listCategory = categoryDAO.findAll();
+//		for(int i=0;i<listCategory.size();i++) {
+//			System.out.println("loai: "+listCategory.get(i).getCtname());
+//		}
+		
+		if(listCategory.size()==0) {
+			System.out.println("Have no entries");
+		}	
+
+		request.setAttribute("listCategory", listCategory);
+
+		//=================================================================================
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/view/index.jsp");
 		requestDispatcher.forward(request, response);
 
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 
 }
