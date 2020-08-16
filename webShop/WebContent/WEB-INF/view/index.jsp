@@ -51,12 +51,15 @@
 	 // Temporary solution
 	ICategoryDAO<Category> categoryDAO = new CategoryDAO();
 	List<Category> listCategory = categoryDAO.findAll();
-	int categoryID=1;
+	int categoryIndex=0;
 	 IMenuDAO<Menu> menuDAO = new MenuDao();
-	 List<Menu> listMenuByCategoryID1 = menuDAO.findAllByCategoryID(categoryID++);
-	 List<Menu> listMenuByCategoryID2 = menuDAO.findAllByCategoryID(categoryID++);
-	 List<Menu> listMenuByCategoryID3 = menuDAO.findAllByCategoryID(categoryID++);
-	 List<Menu> listMenuByCategoryID4 = menuDAO.findAllByCategoryID(categoryID++);
+	// for(int i=0;i<listCategory.size();i++){
+	//	 List<Menu> listMenuByCategoryID1 = menuDAO.findAllByCategoryID(listCategory.get(i).getCtgid());
+	// }
+	 List<Menu> listMenuByCategoryID1 = menuDAO.findAllByCategoryID(listCategory.get(categoryIndex++).getCtgid());
+	 List<Menu> listMenuByCategoryID2 = menuDAO.findAllByCategoryID(listCategory.get(categoryIndex++).getCtgid());
+	 List<Menu> listMenuByCategoryID3 = menuDAO.findAllByCategoryID(listCategory.get(categoryIndex++).getCtgid());
+	 List<Menu> listMenuByCategoryID4 = menuDAO.findAllByCategoryID(listCategory.get(categoryIndex++).getCtgid());
 	
 %>
 
