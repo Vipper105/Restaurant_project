@@ -47,13 +47,16 @@
 	// request.removeAttribute("listMenu"); // xóa cái Attribute("listMenu") => nó ko in ra dc listMenu
 	List<Menu> listMenu = (ArrayList<Menu>) request.getAttribute("listMenu");
 	 // List<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
+	 //Error when getAttribute from servlet 
+	 // Temporary solution
 	ICategoryDAO<Category> categoryDAO = new CategoryDAO();
 	List<Category> listCategory = categoryDAO.findAll();
+	int categoryID=1;
 	 IMenuDAO<Menu> menuDAO = new MenuDao();
-	 List<Menu> listMenuByCategoryID1 = menuDAO.findAllByCategoryID(1);
-	 List<Menu> listMenuByCategoryID2 = menuDAO.findAllByCategoryID(2);
-	 List<Menu> listMenuByCategoryID3 = menuDAO.findAllByCategoryID(3);
-	 List<Menu> listMenuByCategoryID4 = menuDAO.findAllByCategoryID(4);
+	 List<Menu> listMenuByCategoryID1 = menuDAO.findAllByCategoryID(categoryID++);
+	 List<Menu> listMenuByCategoryID2 = menuDAO.findAllByCategoryID(categoryID++);
+	 List<Menu> listMenuByCategoryID3 = menuDAO.findAllByCategoryID(categoryID++);
+	 List<Menu> listMenuByCategoryID4 = menuDAO.findAllByCategoryID(categoryID++);
 	
 %>
 
@@ -244,10 +247,11 @@
 
 				<div id="v-pills-tabContent">
 					<div id="v-pills-home" class="pills">
+					
 						<%for(int i=0;i<listMenuByCategoryID1.size();i++) { %>
 						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
 							onmouseout="hideOverplay('op<%=i+1 %>')">
-							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<img src="<%=contextPath%>/<%=listMenuByCategoryID1.get(i).getIntro() %>" alt="Image">
 							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
 									<h4>Special Drinks <%=i+1 %></h4>
@@ -262,10 +266,11 @@
 					</div>
 
 					<div id="v-pills-profile" class="pills">
+					
 						<%for(int i=0;i<listMenuByCategoryID2.size();i++) { %>
 						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
 							onmouseout="hideOverplay('op<%=i+1 %>')">
-							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<img src="<%=contextPath%>/<%=listMenuByCategoryID2.get(i).getIntro() %>" alt="Image">
 							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
 									<h4>Special Drinks <%=i+1 %></h4>
@@ -279,10 +284,11 @@
 					</div>
 
 					<div id="v-pills-messages" class="pills">
+					
 						<%for(int i=0;i<listMenuByCategoryID3.size();i++) { %>
 						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
 							onmouseout="hideOverplay('op<%=i+1 %>')">
-							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<img src="<%=contextPath%>/<%=listMenuByCategoryID3.get(i).getIntro() %>" alt="Image">
 							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
 									<h4>Special Drinks <%=i+1 %></h4>
@@ -296,10 +302,11 @@
 					</div>
 
 					<div id="v-pills-settings" class="pills">
+					
 						<%for(int i=0;i<listMenuByCategoryID4.size();i++) { %>
 						<div class="container" onmouseover="showOverplay('op<%=i+1 %>')"
 							onmouseout="hideOverplay('op<%=i+1 %>')">
-							<img src="<%=contextPath%>/images/img-0<%=i+1 %>.jpg" alt="Image">
+							<img src="<%=contextPath%>/<%=listMenuByCategoryID4.get(i).getIntro() %>" alt="Image">
 							<div class="overplay" id="op<%=i+1 %>">
 								<div class="text_overplay">
 									<h4>Special Drinks <%=i+1 %></h4>
